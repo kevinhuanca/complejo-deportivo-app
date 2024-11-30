@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.login.RegistrarseActivity">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/outlinedTextField4"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:hint="Nombre"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etRegistroNombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:inputType="text" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/outlinedTextField5"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="Apellido"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/outlinedTextField4">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etRegistroApellido"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:textSize="18sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/outlinedTextField6"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="Email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/outlinedTextField5">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etRegistroEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:textSize="18sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/outlinedTextField7"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="Confirmar email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/outlinedTextField6">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etRegistroReEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:textSize="18sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/outlinedTextField8"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="Clave"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/outlinedTextField7">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etRegistroClave"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:textSize="18sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/outlinedTextField9"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="Confirmar clave"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/outlinedTextField8">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etRegistroReClave"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:textSize="18sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="350dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="30dp"
+        android:text="Registrarme"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/outlinedTextField9" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
