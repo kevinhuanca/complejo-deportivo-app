@@ -62,7 +62,7 @@
             android:id="@+id/etRegistroEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text"
+            android:inputType="textEmailAddress"
             android:textSize="18sp" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -82,7 +82,7 @@
             android:id="@+id/etRegistroReEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text"
+            android:inputType="textEmailAddress"
             android:textSize="18sp" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -93,6 +93,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:hint="Clave"
+        app:endIconMode="password_toggle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
@@ -102,7 +103,7 @@
             android:id="@+id/etRegistroClave"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text"
+            android:inputType="textPassword"
             android:textSize="18sp" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -113,6 +114,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:hint="Confirmar clave"
+        app:endIconMode="password_toggle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
@@ -122,13 +124,13 @@
             android:id="@+id/etRegistroReClave"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text"
+            android:inputType="textPassword"
             android:textSize="18sp" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btRegistrarse"
         android:layout_width="350dp"
         android:layout_height="55dp"
         android:layout_marginTop="30dp"
