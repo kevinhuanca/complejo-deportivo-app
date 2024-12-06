@@ -6,8 +6,10 @@ import android.content.SharedPreferences;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.ulp.canchas.model.Cancha;
+import com.ulp.canchas.model.HoraView;
 import com.ulp.canchas.model.Usuario;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import okhttp3.MultipartBody;
@@ -23,6 +25,7 @@ import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Part;
+import retrofit2.http.Path;
 
 public class ApiClient {
 
@@ -114,9 +117,16 @@ public class ApiClient {
                 @Field("Repetida") String repetida
         );
 
-        @GET ("canchas/todos")
+        @GET("canchas/todos")
         Call<List<Cancha>> todos(
                 @Header("Authorization") String token
+        );
+
+        @GET("horarios/disponible/{idCancha}/{fecha}")
+        Call<List<HoraView>> disponibles(
+                @Header("Authorization") String token,
+                @Path("idCancha") int idCancha,
+                @Path("fecha") LocalDate fecha
         );
 
     }
