@@ -13,4 +13,5 @@
     <string name="menu_reservar">Hacer reserva</string>
     <string name="detalle_cancha">Detalle cancha</string>
     <string name="horario_cancha">Elegí tu horario</string>
+    <string name="pagar_cancha">Realizá tu pago</string>
 </resources>

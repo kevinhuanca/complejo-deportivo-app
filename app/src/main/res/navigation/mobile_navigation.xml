@@ -57,5 +57,17 @@
         <action
             android:id="@+id/action_horarioCanchaFragment_to_detalleCanchaFragment"
             app:destination="@id/detalleCanchaFragment" />
+        <action
+            android:id="@+id/action_horarioCanchaFragment_to_pagarCanchaFragment"
+            app:destination="@id/pagarCanchaFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pagarCanchaFragment"
+        android:name="com.ulp.canchas.ui.reserva.PagarCanchaFragment"
+        android:label="@string/pagar_cancha"
+        tools:layout="@layout/fragment_pagar_cancha" >
+        <action
+            android:id="@+id/action_pagarCanchaFragment_to_horarioCanchaFragment"
+            app:destination="@id/horarioCanchaFragment" />
     </fragment>
 </navigation>
