@@ -4,7 +4,6 @@ import android.app.Application;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Parcel;
-import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -104,7 +103,6 @@ public class HorarioCanchaViewModel extends AndroidViewModel {
             @Override
             public void onFailure(Call<List<HoraView>> call, Throwable throwable) {
                 Toast.makeText(context, "Error del servidor", Toast.LENGTH_SHORT).show();
-                Log.d("errior", throwable.getMessage());
             }
         });
     }

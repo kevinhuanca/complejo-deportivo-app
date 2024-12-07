@@ -11,14 +11,11 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
 
-import android.os.Parcel;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.google.android.material.datepicker.CalendarConstraints;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 import com.ulp.canchas.R;
@@ -29,11 +26,9 @@ import com.ulp.canchas.model.HoraView;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-import java.util.TimeZone;
 
 public class HorarioCanchaFragment extends Fragment {
 
@@ -72,7 +67,6 @@ public class HorarioCanchaFragment extends Fragment {
                         Cancha c = getArguments().getSerializable("cancha", Cancha.class);
                         viewModel.obtenerHorasDisponibles(c.getId(), fechaParaApi);
 
-                        Log.d("fechia", fechaParaApi+"");
                         fecha = fechaParaApi+"";
                     }
                 });
@@ -94,7 +88,8 @@ public class HorarioCanchaFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (horarioAdapter != null && horarioAdapter.getSelected() != null) {
-                    getArguments().putString("fechaHora", fecha+" "+horarioAdapter.getSelected().getHora());
+                    getArguments().putString("fecha", fecha);
+                    getArguments().putString("hora", horarioAdapter.getSelected().getHora());
                     Navigation.findNavController(view).navigate(R.id.pagarCanchaFragment, getArguments());
                 } else {
                     Toast.makeText(getContext(), "No seleccionaste un horario.", Toast.LENGTH_SHORT).show();

@@ -89,7 +89,7 @@ public class HorarioAdapter extends RecyclerView.Adapter<HorarioAdapter.ViewHold
     }
 
     public HoraView getSelected() {
-        if (checkedPosition != -1) {
+        if (checkedPosition < horas.size()) {
             return horas.get(checkedPosition);
         }
         return null;
