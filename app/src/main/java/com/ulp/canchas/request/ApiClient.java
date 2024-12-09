@@ -7,9 +7,12 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.ulp.canchas.model.Cancha;
 import com.ulp.canchas.model.HoraView;
+import com.ulp.canchas.model.Reserva;
 import com.ulp.canchas.model.Usuario;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import okhttp3.MultipartBody;
@@ -127,6 +130,15 @@ public class ApiClient {
                 @Header("Authorization") String token,
                 @Path("idCancha") int idCancha,
                 @Path("fecha") LocalDate fecha
+        );
+
+        @FormUrlEncoded
+        @POST("reservas/registrar")
+        Call<String> guardar(
+                @Header("Authorization") String token,
+                @Field("FechaHora") LocalDateTime fechaHora,
+                @Field("Precio") BigDecimal precio,
+                @Field("CanchaId") int canchaId
         );
 
     }
