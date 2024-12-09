@@ -141,5 +141,10 @@ public class ApiClient {
                 @Field("CanchaId") int canchaId
         );
 
+        @GET("reservas/todos")
+        Call<List<Reserva>> reservas(
+                @Header("Authorization") String token
+        );
+
     }
 }

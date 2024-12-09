@@ -70,4 +70,22 @@
             android:id="@+id/action_pagarCanchaFragment_to_horarioCanchaFragment"
             app:destination="@id/horarioCanchaFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/nav_reservas"
+        android:name="com.ulp.canchas.ui.reservas.ReservasFragment"
+        android:label="@string/menu_reservas"
+        tools:layout="@layout/fragment_reservas" >
+        <action
+            android:id="@+id/action_nav_reservas_to_detalleReservaFragment"
+            app:destination="@id/detalleReservaFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detalleReservaFragment"
+        android:name="com.ulp.canchas.ui.reservas.DetalleReservaFragment"
+        android:label="@string/detalle_reserva"
+        tools:layout="@layout/fragment_detalle_reserva" >
+        <action
+            android:id="@+id/action_detalleReservaFragment_to_nav_reservas"
+            app:destination="@id/nav_reservas" />
+    </fragment>
 </navigation>
