@@ -40,7 +40,7 @@ public class PagarCanchaFragment extends Fragment {
             public void onChanged(PagarView pagarView) {
                 binding.tvPagarCancha.setText(pagarView.getCancha().getNombre());
                 binding.tvPagarFecha.setText(pagarView.getFecha());
-                binding.tvPagarHora.setText(pagarView.getHora());
+                binding.tvPagarHora.setText(pagarView.getHora()+" hs");
                 binding.tvPagarTotal.setText("$ "+pagarView.getCancha().getPrecio()+"");
             }
         });

@@ -55,6 +55,14 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        viewModel.getMCerrar().observe(this, new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean cerrar) {
+                if (cerrar != null && cerrar) {
+                    finish();
+                }
+            }
+        });
 
     }
 }

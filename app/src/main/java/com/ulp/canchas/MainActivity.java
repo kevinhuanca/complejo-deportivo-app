@@ -1,6 +1,8 @@
 package com.ulp.canchas;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
 import android.widget.ImageView;
@@ -8,7 +10,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.google.android.material.snackbar.Snackbar;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
@@ -22,6 +24,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.ulp.canchas.databinding.ActivityMainBinding;
 import com.ulp.canchas.model.Usuario;
 import com.ulp.canchas.request.ApiClient;
+import com.ulp.canchas.ui.login.LoginActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -53,12 +56,33 @@ public class MainActivity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_inicio, R.id.nav_perfil, R.id.nav_reservar, R.id.nav_reservas)
+                R.id.nav_inicio, R.id.nav_perfil, R.id.nav_reservar, R.id.nav_reservas, R.id.nav_salir)
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+        MenuItem navHomeItem = navigationView.getMenu().findItem(R.id.nav_salir);
+
+        navHomeItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                new MaterialAlertDialogBuilder(MainActivity.this)
+                        .setTitle("Cerrar sesión")
+                        .setMessage("¿Estás seguro de que deseas cerrar sesión?")
+                        .setNegativeButton("Cancelar", (dialog, which) -> {
+                            dialog.dismiss();
+                        })
+                        .setPositiveButton("Sí, cerrar sesión", (dialog, which) -> {
+                            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                            startActivity(intent);
+                            finish();
+                        })
+                        .show();
+                return false;
+            }
+        });
 
         drawer.addDrawerListener(new DrawerLayout.DrawerListener() {
             @Override

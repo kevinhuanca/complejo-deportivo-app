@@ -32,6 +32,7 @@ public class HorarioCanchaViewModel extends AndroidViewModel {
 
     private Context context;
     private MutableLiveData<List<HoraView>> mHoras;
+    private MutableLiveData<Boolean> mBoton;
 
     public HorarioCanchaViewModel(@NonNull Application application) {
         super(application);
@@ -43,6 +44,13 @@ public class HorarioCanchaViewModel extends AndroidViewModel {
             mHoras = new MutableLiveData<>();
         }
         return mHoras;
+    }
+
+    public LiveData<Boolean> getMBoton() {
+        if (mBoton == null) {
+            mBoton = new MutableLiveData<>();
+        }
+        return mBoton;
     }
 
     public MaterialDatePicker<Long> crearCalendario() {
@@ -89,9 +97,11 @@ public class HorarioCanchaViewModel extends AndroidViewModel {
             public void onResponse(Call<List<HoraView>> call, Response<List<HoraView>> response) {
                 if (response.isSuccessful()) {
                     mHoras.postValue(response.body());
+                    mBoton.setValue(true);
                 } else {
                     try {
                         mHoras.postValue(new ArrayList<>());
+                        mBoton.setValue(false);
                         String errorBody = response.errorBody().string();
                         Toast.makeText(context, errorBody, Toast.LENGTH_SHORT).show();
                     } catch (IOException e) {

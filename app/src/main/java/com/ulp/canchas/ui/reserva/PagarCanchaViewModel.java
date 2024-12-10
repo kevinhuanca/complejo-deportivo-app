@@ -4,7 +4,6 @@ import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -12,18 +11,15 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.google.android.material.dialog.MaterialAlertDialogBuilder;
-import com.ulp.canchas.MainActivity;
-import com.ulp.canchas.R;
 import com.ulp.canchas.model.Cancha;
 import com.ulp.canchas.model.PagarView;
-import com.ulp.canchas.model.Reserva;
 import com.ulp.canchas.request.ApiClient;
 
-import java.io.IOException;
 import java.math.BigDecimal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
+import java.util.Date;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -63,12 +59,21 @@ public class PagarCanchaViewModel extends AndroidViewModel {
     }
 
     public void obtenerDatos(Bundle bundle) {
-        Cancha cancha = bundle.getSerializable("cancha", Cancha.class);
-        String fecha = bundle.getString("fecha");
-        String hora = bundle.getString("hora");
+        try {
+            Cancha cancha = bundle.getSerializable("cancha", Cancha.class);
+            String fecha = bundle.getString("fecha");
+            String hora = bundle.getString("hora");
 
-        PagarView datos = new PagarView(cancha, fecha, hora);
-        mPagar.setValue(datos);
+            SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd");
+            SimpleDateFormat outputFormat = new SimpleDateFormat("dd/MM/yyyy");
+
+            Date date = inputFormat.parse(fecha);
+            String fechaFormateada = outputFormat.format(date);
+            PagarView datos = new PagarView(cancha, fechaFormateada, hora);
+            mPagar.setValue(datos);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void verificarPago() {

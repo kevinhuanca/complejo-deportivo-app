@@ -84,16 +84,19 @@ public class HorarioCanchaFragment extends Fragment {
             }
         });
 
+        viewModel.getMBoton().observe(getViewLifecycleOwner(), new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean b) {
+                binding.btIrAPagar.setEnabled(b);
+            }
+        });
+
         binding.btIrAPagar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (horarioAdapter != null && horarioAdapter.getSelected() != null) {
-                    getArguments().putString("fecha", fecha);
-                    getArguments().putString("hora", horarioAdapter.getSelected().getHora());
-                    Navigation.findNavController(view).navigate(R.id.pagarCanchaFragment, getArguments());
-                } else {
-                    Toast.makeText(getContext(), "No seleccionaste un horario.", Toast.LENGTH_SHORT).show();
-                }
+                getArguments().putString("fecha", fecha);
+                getArguments().putString("hora", horarioAdapter.getSelected().getHora());
+                Navigation.findNavController(view).navigate(R.id.pagarCanchaFragment, getArguments());
             }
         });
 

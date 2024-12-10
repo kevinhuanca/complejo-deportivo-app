@@ -7,6 +7,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 
 import com.ulp.canchas.MainActivity;
 import com.ulp.canchas.request.ApiClient;
@@ -20,10 +22,18 @@ import retrofit2.Response;
 public class LoginViewModel extends AndroidViewModel {
 
     private Context context;
+    private MutableLiveData<Boolean> mCerrar;
 
     public LoginViewModel(@NonNull Application application) {
         super(application);
         context = application.getApplicationContext();
+    }
+
+    public LiveData<Boolean> getMCerrar() {
+        if (mCerrar == null) {
+            mCerrar = new MutableLiveData<>();
+        }
+        return mCerrar;
     }
 
     public void llamarLogin(String email, String clave) {
@@ -43,6 +53,7 @@ public class LoginViewModel extends AndroidViewModel {
                     Intent intent = new Intent(context, MainActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(intent);
+                    mCerrar.setValue(true);
                 } else {
                     try {
                         String errorBody = response.errorBody().string();
