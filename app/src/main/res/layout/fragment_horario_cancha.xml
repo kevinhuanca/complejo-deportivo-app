@@ -8,7 +8,6 @@
 
     <Button
         android:id="@+id/btElegirFecha"
-        style="@style/Widget.Material3.Button.TonalButton"
         android:layout_width="350dp"
         android:layout_height="55dp"
         android:layout_marginTop="10dp"
