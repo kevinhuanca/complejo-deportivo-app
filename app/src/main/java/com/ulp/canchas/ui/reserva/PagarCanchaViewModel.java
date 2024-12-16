@@ -18,7 +18,9 @@ import com.ulp.canchas.request.ApiClient;
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 import retrofit2.Call;
@@ -78,7 +80,12 @@ public class PagarCanchaViewModel extends AndroidViewModel {
 
     public void verificarPago() {
         PagarView datos = mPagar.getValue();
-        LocalDateTime fechaHora = LocalDateTime.parse(datos.getFecha()+"T"+datos.getHora()+":00");
+
+        DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String fechaFormate = LocalDate.parse(datos.getFecha(), inputFormatter).format(outputFormatter);
+
+        LocalDateTime fechaHora = LocalDateTime.parse(fechaFormate+"T"+datos.getHora()+":00");
         BigDecimal precio = datos.getCancha().getPrecio();
         int canchaId = datos.getCancha().getId();
 
