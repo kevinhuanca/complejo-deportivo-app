@@ -24,7 +24,7 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyAIhX-56cay9HgNp3uJf1GZ1NQnYVv4wzI" />
+            android:value="AIzaSyDSo2bCGW0hPR58xDxvadMb3qnsrSwnrNY" />
 
         <activity
             android:name=".ui.login.OlvideClaveActivity"
