@@ -19,6 +19,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.ulp.canchas.R;
 import com.ulp.canchas.databinding.FragmentDetalleReservaBinding;
 import com.ulp.canchas.model.Reserva;
+import com.ulp.canchas.request.ApiClient;
 
 public class DetalleReservaFragment extends Fragment {
 
@@ -48,7 +49,7 @@ public class DetalleReservaFragment extends Fragment {
                 binding.tvRCapacidad.setText("Capacidad: "+j+"c"+j+" ("+reserva.getCancha().getCapacidad()+")");
                 binding.tvRPrecio.setText("Precio: $ "+reserva.getPrecio());
                 Glide.with(getContext())
-                        .load("http://192.168.0.14:5218/ca/"+reserva.getCancha().getImagen())
+                        .load(ApiClient.URLBASE + "ca/" + reserva.getCancha().getImagen())
                         .placeholder(R.drawable.default_imagen)
                         .diskCacheStrategy(DiskCacheStrategy.ALL)
                         .into(binding.ivRImagen);

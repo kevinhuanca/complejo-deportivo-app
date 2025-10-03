@@ -17,6 +17,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.ulp.canchas.R;
 import com.ulp.canchas.model.Cancha;
+import com.ulp.canchas.request.ApiClient;
 
 import java.util.List;
 
@@ -44,7 +45,7 @@ public class CanchaAdapter extends RecyclerView.Adapter<CanchaAdapter.ViewHolder
         holder.tvDescripcion.setText("Capacidad maxima: "+j+"c"+j);
         holder.tvPrecio.setText("Precio: $ "+cancha.getPrecio());
         Glide.with(holder.itemView)
-                .load("http://192.168.0.14:5218/ca/"+cancha.getImagen())
+                .load(ApiClient.URLBASE + "ca/" + cancha.getImagen())
                 .placeholder(R.drawable.default_imagen)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.ivImagen);

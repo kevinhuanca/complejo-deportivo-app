@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
                             Usuario u = response.body();
                             String avatarStr = u.getAvatar().isEmpty() ? "default.jpg" : u.getAvatar();
                             Glide.with(getApplicationContext())
-                                    .load("http://192.168.0.14:5218/av/" + avatarStr)
+                                    .load(ApiClient.URLBASE + "av/" + avatarStr)
                                     .diskCacheStrategy(DiskCacheStrategy.ALL)
                                     .circleCrop()
                                     .into(avatar);

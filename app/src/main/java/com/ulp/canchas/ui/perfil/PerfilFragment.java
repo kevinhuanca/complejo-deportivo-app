@@ -27,6 +27,7 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.ulp.canchas.R;
 import com.ulp.canchas.databinding.FragmentPerfilBinding;
 import com.ulp.canchas.model.Usuario;
+import com.ulp.canchas.request.ApiClient;
 
 public class PerfilFragment extends Fragment {
 
@@ -57,7 +58,7 @@ public class PerfilFragment extends Fragment {
                 binding.etPerfilEmail.setText(usuario.getEmail());
                 String avatar = usuario.getAvatar().isEmpty() ? "default.jpg" : usuario.getAvatar();
                 Glide.with(getContext())
-                        .load("http://192.168.0.14:5218/av/" + avatar)
+                        .load(ApiClient.URLBASE + "av/" + avatar)
                         .placeholder(R.drawable.default_avatar)
                         .diskCacheStrategy(DiskCacheStrategy.ALL)
                         .transform(new RoundedCorners(70))

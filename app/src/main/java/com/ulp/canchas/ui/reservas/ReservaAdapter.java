@@ -16,6 +16,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.ulp.canchas.R;
 import com.ulp.canchas.model.Reserva;
+import com.ulp.canchas.request.ApiClient;
 
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -44,7 +45,7 @@ public class ReservaAdapter extends RecyclerView.Adapter<ReservaAdapter.ViewHold
         holder.tvHora.setText("Hora: "+reserva.getHora()+" hs");
 
         Glide.with(holder.itemView)
-                .load("http://192.168.0.14:5218/ca/"+reserva.getCancha().getImagen())
+                .load(ApiClient.URLBASE + "ca/" + reserva.getCancha().getImagen())
                 .placeholder(R.drawable.default_imagen)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.ivImagen);

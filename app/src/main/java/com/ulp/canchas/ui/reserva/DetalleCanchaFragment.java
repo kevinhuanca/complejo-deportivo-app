@@ -20,6 +20,7 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.ulp.canchas.R;
 import com.ulp.canchas.databinding.FragmentDetalleCanchaBinding;
 import com.ulp.canchas.model.Cancha;
+import com.ulp.canchas.request.ApiClient;
 
 public class DetalleCanchaFragment extends Fragment {
 
@@ -48,7 +49,7 @@ public class DetalleCanchaFragment extends Fragment {
                 binding.tvDetalleCapacidad.setText("Capacidad: "+j+"c"+j+" ("+cancha.getCapacidad()+")");
                 binding.tvDetallePrecio.setText("Precio: $ "+cancha.getPrecio());
                 Glide.with(getContext())
-                        .load("http://192.168.0.14:5218/ca/"+cancha.getImagen())
+                        .load(ApiClient.URLBASE + "ca/" + cancha.getImagen())
                         .placeholder(R.drawable.default_imagen)
                         .diskCacheStrategy(DiskCacheStrategy.ALL)
                         .into(binding.ivDetalleImagen);
