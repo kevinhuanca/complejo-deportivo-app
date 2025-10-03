@@ -18,6 +18,12 @@ public class Reserva implements Serializable {
     public Reserva() {
     }
 
+    public Reserva(String fechaHora, BigDecimal precio, int canchaId) {
+        this.fechaHora = fechaHora;
+        this.precio = precio;
+        this.canchaId = canchaId;
+    }
+
     public Reserva(int id, String fechaHora, BigDecimal precio, int usuarioId, Usuario usuario, int canchaId, Cancha cancha) {
         this.id = id;
         this.fechaHora = fechaHora;

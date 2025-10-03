@@ -13,6 +13,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.ulp.canchas.model.Cancha;
 import com.ulp.canchas.model.PagarView;
+import com.ulp.canchas.model.Reserva;
 import com.ulp.canchas.request.ApiClient;
 
 import java.math.BigDecimal;
@@ -89,8 +90,10 @@ public class PagarCanchaViewModel extends AndroidViewModel {
         BigDecimal precio = datos.getCancha().getPrecio();
         int canchaId = datos.getCancha().getId();
 
+        Reserva reserva = new Reserva(fechaHora+"", precio, canchaId);
+
         ApiClient.CanchasService api = ApiClient.getApiCanchas();
-        Call<String> llamada = api.guardar(ApiClient.getToken(context), fechaHora, precio, canchaId);
+        Call<String> llamada = api.guardar(ApiClient.getToken(context), reserva);
 
         llamada.enqueue(new Callback<String>() {
             @Override

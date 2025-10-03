@@ -20,6 +20,7 @@ import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
+import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -32,13 +33,14 @@ import retrofit2.http.Path;
 
 public class ApiClient {
 
-    public static final String URLBASE = "http://192.168.0.14:5218/api/";
+    // Cambiar 'localhost' por su ip local, por ejemplo '192.168.0.10'
+    public static final String URLBASE = "http://localhost:5218/";
     private static SharedPreferences sp;
 
     public static CanchasService getApiCanchas() {
         Gson gson = new GsonBuilder().setLenient().create();
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(URLBASE)
+                .baseUrl(URLBASE+"api/")
                 .addConverterFactory(ScalarsConverterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
@@ -132,13 +134,10 @@ public class ApiClient {
                 @Path("fecha") LocalDate fecha
         );
 
-        @FormUrlEncoded
         @POST("reservas/registrar")
         Call<String> guardar(
                 @Header("Authorization") String token,
-                @Field("FechaHora") LocalDateTime fechaHora,
-                @Field("Precio") BigDecimal precio,
-                @Field("CanchaId") int canchaId
+                @Body Reserva reserva
         );
 
         @GET("reservas/todos")
